@@ -16,6 +16,6 @@ For the generation of the macro name, each alphanumeric character gets converted
 
 ## Usage
 
-`include_guard FILES ...`
-
+`include_guard FILES...`
+Be aware that all files will get truncated.
 
