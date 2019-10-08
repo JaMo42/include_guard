@@ -37,7 +37,7 @@ int main(const int argc, const char **argv) {
         }
         // Open file
         std::cout << file_name << std::endl;
-        std::fstream file(argv[i]);
+        std::fstream file(argv[i], std::ios::out);
         if (file.is_open()) {
             // Write include guard
             const std::string macro_name = get_macro_name(file_name);
