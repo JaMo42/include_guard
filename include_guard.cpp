@@ -23,7 +23,7 @@ int main(const int argc, const char **argv) {
     }
     // Number of files that could not be opened / written to
     unsigned num_fails = 0;
-    std::cout << "Creating include guards ..." << std::endl;
+    std::cout << "Creating include guards..." << std::endl;
     for (unsigned i = 1; i < argc; i++) {
         std::string file_name(argv[i]);
         // Extract file name, if a path is given
@@ -43,10 +43,10 @@ int main(const int argc, const char **argv) {
             const std::string macro_name = get_macro_name(file_name);
             file << "#ifndef " << macro_name << '\n';
             file << "#define " << macro_name << '\n';
-            file << "#endif /* !" << macro_name << " */" << '\n';
+            file << "#endif /* !" << macro_name << " */\n";
             file.close();
         } else {
-            std::cerr << "...could not be opened!" << std::endl;
+            std::cerr << " could not be opened!" << std::endl;
             ++num_fails;
         }
     }
