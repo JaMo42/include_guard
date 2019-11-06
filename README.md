@@ -21,4 +21,4 @@ For the generation of the macro name, each alphanumeric character gets converted
 
 `include_guard FILES...`
 
-This program does not take any options, all arguments are interpreted as file names.S
+This program does not take any options, all arguments are interpreted as file names.
