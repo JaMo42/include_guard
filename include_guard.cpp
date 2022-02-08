@@ -12,9 +12,9 @@
 using namespace std::literals;
 namespace fs = std::filesystem;
 
-enum TriState { Yes, No, Undefined };
+enum class TriState { Yes, No, Undefined };
 
-enum ArgumentError { Success, Invalid, NoArg, ExtraArg };
+enum class ArgumentError { Success, Invalid, NoArg, ExtraArg };
 
 // Consider these extensions as C++ files, use `#pragma once` by default for
 // them
@@ -287,4 +287,3 @@ main (const int argc, const char *argv[])
   if (G_did_skip_because_not_empty)
     std::cout << "Note: run with -f/--force to overwrite non-empty files.\n";
 }
-
