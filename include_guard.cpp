@@ -166,6 +166,10 @@ argument_error_text (ArgumentError err)
 {
   switch (err)
     {
+      break; case ArgumentError::Success:
+        // Should never be called if err is ArgumentError::Success,
+        // this case exists just to disable compiler warnings.
+        return {};
       break; case ArgumentError::Invalid:
         return "does not exist"sv;
       break; case ArgumentError::NoArg:
@@ -173,6 +177,7 @@ argument_error_text (ArgumentError err)
       break; case ArgumentError::ExtraArg:
         return "does not take an argument"sv;
     }
+  // Also to disable warnings
   return {};
 }
 
