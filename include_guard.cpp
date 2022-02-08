@@ -217,6 +217,14 @@ usage (const char *program)
 int
 main (const int argc, const char *argv[])
 {
+#ifdef _WIN32
+  // Windows (powershell) gives the full path for the program,
+  // replace it with just the file name.
+  // May not always be what we want but it's cleaner over all.
+  const std::string _program = fs::path (argv[0]).filename ().string ();
+  argv[0] = _program.c_str ();
+#endif
+
   std::vector<fs::path> files;
 
   auto usage_tip = [&argv]() {
