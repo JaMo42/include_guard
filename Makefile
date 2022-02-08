@@ -1,5 +1,5 @@
 CXX=g++
-CXX_FLAGS=-std=c++17 -march=native -O3
+CXX_FLAGS=-std=c++20 -march=native -mtune=native -O2
 
 include_guard: include_guard.cpp
 	$(CXX) $(CXX_FLAGS) -o $@ $^
