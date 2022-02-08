@@ -4,7 +4,11 @@
 #include <iostream>
 #include <filesystem>
 #include <fstream>
-#include <experimental/iterator>  // make_ostream_joiner
+#if __has_include (<experimental/iterator>)
+#  include <experimental/iterator>  // make_ostream_joiner
+#else
+#  define NO_EXPERIMENTAL_ITERATOR
+#endif
 using namespace std::literals;
 namespace fs = std::filesystem;
 
@@ -189,8 +193,14 @@ usage (const char *program)
 
   std::cout << "\nBy default '#pragma once' is used for C++ files and macros for C files.\n";
   std::cout << "The extensions to classify a file as C++ are: ";
+#ifdef NO_EXPERIMENTAL_ITERATOR
+  std::cout << kCppExtensions[0];
+  for (std::size_t i = 1; i < kCppExtensions.size (); ++i)
+    std::cout << ", " << kCppExtensions[i];
+#else
   std::copy (kCppExtensions.begin (), kCppExtensions.end (),
              std::experimental::make_ostream_joiner (std::cout, ", "));
+#endif
   std::cout << ".\n";
 
   std::cout << "\nMacro names are derived from the file names by:\n";
